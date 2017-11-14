@@ -1,0 +1,18 @@
+ <h1 class="page-header">痴漢BBS</h1>
+ <div class="row">
+   <div class="col-sm-6">
+    <%=form_for(@remark) do |f| %>
+     <div class="form-inline "><%=f.submit "書き込む",class:'btn btn-primary'%><%=f.label :name,'名前:',class:'control-label'%><%=f.text_field :name,maxlength: 10,class:'form-control input-sm'%></div>
+     <%=f.text_area :sentence,placeholder:'ここに書き込んでください',class:'form-control'%>
+    <%end%>
+  </div>
+
+</div>
+  <%= will_paginate %>
+  <div class="bulletin">
+
+   <%= @remarks.each do |remark| %>
+    <div><%= remark.name %>|<%= remark.posted_at %></div>
+    <div><%= simple_format(h(remark.sentence)) %></div>
+   <% end %>
+  </div>
